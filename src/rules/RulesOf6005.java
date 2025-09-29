@@ -3,6 +3,8 @@
  */
 package rules;
 
+
+
 /**
  * RulesOf6005 represents the collaboration policy of 6.005 as described by the
  * general information on Stellar.
@@ -32,16 +34,8 @@ public class RulesOf6005 {
      *         question in your assignment, according to the 6.005 collaboration
      *         policy for the current semester.
      */
-    public static boolean mayUseCodeInAssignment(boolean writtenByYourself,
-            boolean availableToOthers, boolean writtenAsCourseWork,
-            boolean citingYourSource, boolean implementationRequired) {
-        
-        // TODO: Fill in this method, then remove the exception
-        
-        throw new RuntimeException("implement me!");
-    }
-    
-    /**
+	
+	/**
      * Main method of the class.
      * 
      * Runs the mayUseCodeInAssignment method.
@@ -52,4 +46,28 @@ public class RulesOf6005 {
         System.out.println("You may certainly use code you wrote yourself: " +
             RulesOf6005.mayUseCodeInAssignment(true, false, true, true, true));
     }
+	
+	public static boolean mayUseCodeInAssignment(boolean writtenByYourself,
+    boolean availableToOthers, boolean writtenAsCourseWork, boolean citingYourSource,
+    boolean implementationRequired) 
+	{
+		// If you wrote it yourself, you can use it
+		if (writtenByYourself) {
+			return true;
+		}
+
+		// If the assignment requires you to implement it yourself,
+		// then you cannot just use someone else’s code
+		if (implementationRequired) {
+			return false;
+		}
+
+		// If it’s coursework from someone else, you can’t use it
+		if (writtenAsCourseWork) {
+			return false;
+		}
+
+		// Otherwise, you may use it if it’s publicly available and properly cited
+		return availableToOthers && citingYourSource;
+	}
 }
